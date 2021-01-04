@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family:"Kumbh Sans", sans-serif;
+    background-color: #eae2b7;
+    color: #003049;
+    font-weight: 300;
+    font-size: 1.5rem;
+
+    display: grid;
+    grid: 
+            "header header header header" auto
+            "......  lists  active  ......" auto/
+            1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
+}
+
+.title{
+    grid-area: header;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    margin: 5px;
+}
+
+.all-tasks{
+    grid-area: lists;
+}
+
+.task-list {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    list-style: circle;
+    padding-left: 1.1em;
+}
+
+.task-list-title {
+    margin-bottom: 5px;
+}
+/**.new-task-creator .create{
+    color: #f77f00;
+}**/
+
+.list-name {
+    cursor: pointer;
+}
+
+.list-name:hover {
+   opacity: 0.7; 
+}
+
+form{
+    display: flex;
+}
+
+.btn {
+    cursor: pointer;
+    background: 0;
+    border: none;
+    padding: 0;
+    color: inherit;
+}
+
+.btn.delete {
+    opacity: 0.7;
+    font-size: 1rem;
+    color: #003049;
+    transition: color 200ms;
+}
+
+.btn.delete:hover {
+    color: red;
+}
+
+.btn.create{
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-right: 0.75em;
+    transition: opacity 250ms ease-in;
+}
+
+.btn.create:hover {
+    opacity: 0.7;
+}
+
+
+
+.new {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    font-size: inherit;
+    outline: none;
+    padding: 0.25em;
+    transition: border-bottom 150ms ease-in;
+    order: 2;
+}
+
+.new::placeholder {
+    opacity: 0.4;
+}
+
+.new:focus {
+    border-bottom-width: 3px;
+}
+
+.new:focus::placeholder {
+    opacity: 0.2;
+}
+
+.new.list{
+    font-size: 1.1rem;
+}
+
+.new.task {
+    margin: 0;
+}
+
+.active-list {
+    font-weight: 700;
+}
+
+.todo-list{
+    --spacer: 2rem;
+    box-shadow: 10px 15px 15px #888888d7;
+    grid-area: active;
+    background: #003e5f;
+    color: #fcbf49;
+}
+
+.todo-header{
+    padding: var(--spacer);
+    background: #013552;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-title {
+    margin: 0 1em 0 0;
+}
+
+.task-count {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.todo-body {
+    padding: var(--spacer);
+    position: relative;
+}
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.task label {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 0.5em;
+}
+
+.task {
+    position: relative;
+    margin-bottom: 1.25em;
+}
+
+.task::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -0.5em;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.3;
+}
+
+.custom-checkbox {
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    margin-right: 0.6em;
+    cursor: pointer;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    transform: scaleX(1);
+    transition: transform 200ms ease-in-out;
+}
+
+.task:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox{
+    transform: scale(1.2);
+    color: #eae2b7;
+}
+
+[type="checkbox"]:checked + label .custom-checkbox{
+    background: #eae2b7;
+    border-color: #eae2b7;
+    box-sizing: inset 0 0 0 3px black;
+}
+
+[type="checkbox"]:checked + label {
+    opacity: 0.5;
+}
+
+.task label::after{
+    content: "";
+    position: absolute;
+    left: 1.5em;
+    right:0;
+    height: 3px;
+    background: currentColor;
+    top: calc(50% - 1.5px);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.delete-stuff {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -35px;
+}
+
